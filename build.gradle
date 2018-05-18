@@ -1,0 +1,45 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+plugins {
+    id "com.github.dcendents.android-maven" version "1.5"
+}
+
+allprojects {
+
+    version = VERSION_NAME
+    group = POM_GROUP_ID
+
+    repositories {
+        jcenter()
+        google()
+    }
+}
+
+static int getVersionCode() {
+    def date = new Date()
+    def formattedDate = date.format('yyMMddHHmm')
+    return formattedDate as int
+}
+
+ext{
+    //版本号
+    versionCode = getVersionCode()
+    versionName = VERSION_NAME
+    //依赖版本号
+    supportVersionName = '26.1.0'
+}
